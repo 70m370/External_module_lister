@@ -145,7 +145,8 @@ int main()
 	std::cout << procname;
 	//GetProcId(finalexecname);
 	//PrintModules();
-
+	int test = 0;
+	std::cin >> test;
 	// free((void*)finalexecname);
 	return 0;
 }

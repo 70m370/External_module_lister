@@ -4,6 +4,7 @@
 #include<iostream>
 #include<string>
 
+
 //global variables
 //
 HANDLE process = NULL;
@@ -97,6 +98,34 @@ MODULEINFO GetModuleInfo(HMODULE hModule)
 	return modinfo;
 }
 
+//
+//built this other ID verification just to test
+int check_process_id(DWORD processid)
+{
+	DWORD Listcurproc[1024];
+	DWORD curprocneed;
+	DWORD cProcesses;
+
+	if (!EnumProcesses(Listcurproc, sizeof(Listcurproc), &curprocneed))
+		return 1;
+
+	cProcesses = curprocneed / sizeof(DWORD);
+
+	for (int i = 0; i < sizeof(Listcurproc); i++)
+	{
+		if (Listcurproc[i] == processid)
+		{
+			procID = Listcurproc[i];
+			return 0;
+		}
+	}
+
+	return 0;
+}
+
+//
+//Problem in Szmodname - checked in printmodules OK - inside the main function here, we got a problem in the while loop bellow
+
 int main()
 {
 	//
@@ -105,8 +134,11 @@ int main()
 	std::string procname;
 	std::cin >> procname;
 	char* processname = const_cast<char*>(procname.c_str());
+
 	getprocess(processname);
+	check_process_id(procID);
 	PrintModules(procID);
+
 	printf("%d modules inside this executable \n", modulesinapp);
 
 
@@ -129,17 +161,18 @@ int main()
 			PROCESS_VM_READ,
 			FALSE, GetCurrentProcessId()); //used to be FALSE - testing right now
 
-		TCHAR szModName[MAX_PATH];
+		TCHAR szModNames[MAX_PATH];
 
 		//
 		// Get the full path to the module's file.
-		GetModuleFileNameEx(curproc, hMods[y], szModName, sizeof(szModName) / sizeof(TCHAR));
+		GetModuleFileNameEx(curproc, hMods[y], szModNames, sizeof(szModNames) / sizeof(TCHAR));
 
 		//
 		//printing modules path inside application and their size.          
-		printf(TEXT("\t%s (0x%08X)\t Module name: %d\n"), szModName, hMods[y], module_number);
+		printf(TEXT("\t%s (0x%08X)\t Module name: %d\n"), szModNames, hMods[y], module_number);
 		//
 	}
+	Sleep(4);
 	//const wchar_t* szName = name.c_str();
 	//printf("%c", procname);
 	std::cout << procname;

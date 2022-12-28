@@ -1,5 +1,5 @@
 ﻿  main.cpp
-E:\Github-repo\External_module_lister\External_module_lister\main.cpp(167,11): warning C4018: '<=': signed/unsigned mismatch
-E:\Github-repo\External_module_lister\External_module_lister\main.cpp(234,11): warning C4018: '<=': signed/unsigned mismatch
-E:\Github-repo\External_module_lister\External_module_lister\main.cpp(259,10): warning C4477: 'printf' : format string '%08X' requires an argument of type 'unsigned int', but variadic argument 2 has type 'HMODULE'
+E:\Github-repo\External_module_lister\External_module_lister\main.cpp(149,11): warning C4018: '<=': signed/unsigned mismatch
+E:\Github-repo\External_module_lister\External_module_lister\main.cpp(201,11): warning C4018: '<=': signed/unsigned mismatch
+E:\Github-repo\External_module_lister\External_module_lister\main.cpp(224,11): warning C4477: 'printf' : format string '%08X' requires an argument of type 'unsigned int', but variadic argument 2 has type 'HMODULE'
   External_module_lister.vcxproj -> E:\Github-repo\External_module_lister\Debug\External_module_lister.exe

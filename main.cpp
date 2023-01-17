@@ -144,11 +144,11 @@ int ModuleLister(int module_number_input)
 	//
 	// Get the full path to the module's file.
 	GetModuleFileNameEx(curproc, hMods[module_number_input], szModName, sizeof(szModName) / sizeof(TCHAR));
-	
+
+
 
 	while (i <= sizeinside)
 	{
-		int num = 400000;
 		i++;
 		int valuehex = 0x0 + i;
 		DWORD* BaseModuleAddresses = (DWORD*)(baseinside + valuehex);

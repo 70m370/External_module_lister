@@ -5,24 +5,6 @@
 #include<string>
 
 
-
-//
-//Project IDEA so far
- 
-// - CHECK 1 DONE
-//receive user input(executable name) - search for it - find the process ID
-
-// - CHECK 2 DONE
-//run the printmodules, list the modules inside the application
-
-// - DO DONE
-//ask for the specified module name to list what its loading in memory
-//solved with module number
-
-// DONE
-//create a static menu where you restart the search, Getasynckeystate - something to restart the app
-//solved with goto statemant way easier but unsafe in case of bufferoverflow, i thought about using assembly directly into it
-
 //
 //Macros
 #define MEMO_PROTEC (PAGE_READONLY | PAGE_EXECUTE_READ | PAGE_READWRITE| PAGE_EXECUTE_READWRITE)
@@ -187,13 +169,12 @@ int main()
 	std::string procname;
 	std::cin >> procname;
 	char* processname = const_cast<char*>(procname.c_str());
-
+	
 
 	getprocess(processname);
 	PrintModules(procID);
 
-	printf("%d modules inside this executable \n", modulesinapp);
-
+	std::cout << modulesinapp << "  modules inside this executable \n";
 
 	int y = 0;
 	int module_number = 0;
@@ -221,7 +202,7 @@ int main()
 		GetModuleFileNameEx(curproc, hMods[y], szModName, sizeof(szModName) / sizeof(TCHAR));
 		if (baseinside != 0)
 		{
-			printf(TEXT("\t%s (0x%08X)\t Module number: %d\n"), szModName, hMods[y], module_number);
+			std::cout << "\t" << szModName << "(0x"<< std::hex << hMods[y] <<")\t Module number: " << std::dec << module_number <<"\n";
 		}	
 	}
 

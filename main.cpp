@@ -145,7 +145,7 @@ int ModuleLister(int module_number_input)
 			if (BaseModuleAddresses)
 			{
 				ReadProcessMemory(curproc, (PVOID)BaseModuleAddresses, &nbuffer, sizeof(BaseModuleAddresses), 0);
-				std::cout << szModName << " (" << std::hex << BaseModuleAddresses << ") " << " + " << valuehex << " Acess: " << std::hex << nbuffer << "\n"; // it worked
+				std::cout << szModName << " (" << std::hex << BaseModuleAddresses << ") " << " + " << valuehex << " Access: " << std::hex << nbuffer << "\n"; // it worked
 			}
 			else
 			{
